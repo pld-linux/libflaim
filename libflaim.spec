@@ -1,7 +1,7 @@
 # TODO
 # - cflags & g++
 Summary:	Embeddable cross-platform database engine
-Summary(pl):	Osadzalny, wieloplatformowy silnik baz danych
+Summary(pl.UTF-8):   Osadzalny, wieloplatformowy silnik baz danych
 Name:		libflaim
 Version:	4.8.143
 Release:	0.1
@@ -20,35 +20,35 @@ used by Novell eDirectory. It has proven to be highly scalable,
 reliable, and robust. It is available on a wide variety of 32 bit and
 64 bit platforms.
 
-%description -l pl
-FLAIM to osadzalny, wieloplatformowy silnik baz danych udostêpniaj±cy
-bogaty, potê¿ny i ³atwy w u¿yciu zbiór mo¿liwo¶ci. Jest to silnik baz
-danych u¿ywany przez Novell eDirectory. Sprawdzi³ siê jako wysoko
-skalowalny, pewny i silny. Jest dostêpny na wiele platform 32- i
+%description -l pl.UTF-8
+FLAIM to osadzalny, wieloplatformowy silnik baz danych udostÄ™pniajÄ…cy
+bogaty, potÄ™Å¼ny i Å‚atwy w uÅ¼yciu zbiÃ³r moÅ¼liwoÅ›ci. Jest to silnik baz
+danych uÅ¼ywany przez Novell eDirectory. SprawdziÅ‚ siÄ™ jako wysoko
+skalowalny, pewny i silny. Jest dostÄ™pny na wiele platform 32- i
 64-bitowych.
 
 %package devel
 Summary:	Header files for libflaim library
-Summary(pl):	Pliki nag³ówkowe biblioteki libflaim
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki libflaim
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 This is the package containing the header files for libflaim library.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe biblioteki libflaim.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe biblioteki libflaim.
 
 %package static
 Summary:	Static libflaim library
-Summary(pl):	Statyczna biblioteka libflaim
+Summary(pl.UTF-8):   Statyczna biblioteka libflaim
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libflaim library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libflaim.
 
 %prep
