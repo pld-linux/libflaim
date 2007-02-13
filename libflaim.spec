@@ -1,7 +1,7 @@
 # TODO
 # - cflags & g++
 Summary:	Embeddable cross-platform database engine
-Summary(pl.UTF-8):   Osadzalny, wieloplatformowy silnik baz danych
+Summary(pl.UTF-8):	Osadzalny, wieloplatformowy silnik baz danych
 Name:		libflaim
 Version:	4.8.143
 Release:	0.1
@@ -29,7 +29,7 @@ skalowalny, pewny i silny. Jest dostępny na wiele platform 32- i
 
 %package devel
 Summary:	Header files for libflaim library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libflaim
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libflaim
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -41,7 +41,7 @@ Ten pakiet zawiera pliki nagłówkowe biblioteki libflaim.
 
 %package static
 Summary:	Static libflaim library
-Summary(pl.UTF-8):   Statyczna biblioteka libflaim
+Summary(pl.UTF-8):	Statyczna biblioteka libflaim
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
