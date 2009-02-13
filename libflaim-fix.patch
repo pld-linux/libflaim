@@ -1,0 +1,35 @@
+--- src/kybuild.cpp.org	2006-09-11 20:48:30.000000000 +0200
++++ src/kybuild.cpp	2009-02-09 15:52:25.000000000 +0100
+@@ -533,8 +533,8 @@
+ 				if (pIxd->uiFlags & IXD_OFFLINE)
+ 				{
+ 					if (uiContainerNum > pIxd->uiLastContainerIndexed ||
+-						 uiContainerNum == pIxd->uiLastContainerIndexed &&
+-						 uiDrn > pIxd->uiLastDrnIndexed)
++						 (uiContainerNum == pIxd->uiLastContainerIndexed &&
++						 uiDrn > pIxd->uiLastDrnIndexed))
+ 					{
+ 						continue;
+ 					}
+--- ftk/src/ftkftx.cpp.org	2009-02-09 15:55:37.000000000 +0100
++++ ftk/src/ftkftx.cpp	2009-02-09 15:54:07.000000000 +0100
+@@ -305,7 +305,7 @@
+ 		#define _WIDEC_H
+ 	#endif
+ 	
+-	#include <curses.h>
++	#include <ncurses/ncurses.h>
+ 	
+ 	#ifdef FLM_AIX
+ 		#ifdef wgetch
+--- ftk/src/ftk.h.org	2006-09-11 20:48:30.000000000 +0200
++++ ftk/src/ftk.h	2009-02-09 16:10:02.000000000 +0100
+@@ -3658,7 +3658,7 @@
+ 	} F_TMSTAMP;
+ 
+ 	#define f_timeIsLeapYear(year) \
+-		((((year) & 0x03) == 0) && (((year) % 100) != 0) || (((year) % 400) == 0))
++		(((((year) & 0x03) == 0) && (((year) % 100) != 0)) || (((year) % 400) == 0))
+ 
+ 	void f_timeGetSeconds(
+ 		FLMUINT	*		puiSeconds);
