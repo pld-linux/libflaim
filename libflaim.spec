@@ -3,12 +3,13 @@
 Summary:	Embeddable cross-platform database engine
 Summary(pl.UTF-8):	Osadzalny, wieloplatformowy silnik baz danych
 Name:		libflaim
-Version:	4.8.143
-Release:	0.1
+Version:	4.9.845
+Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://forgeftp.novell.com/flaim/flaim/downloads/source/%{name}-%{version}.tar.gz
-# Source0-md5:	de23c05fe8ec5ded79ca01700058e5b8
+Source0:	http://forgeftp.novell.com/flaim/release/flaim/downloads/source/%{name}-%{version}.tar.gz
+# Source0-md5:	f719fe61584e9a2c2a2aede9a59cf5c1
+Patch0:		%{name}-fix.patch
 URL:		http://forge.novell.com/modules/xfmod/project/?flaim
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -53,6 +54,7 @@ Statyczna biblioteka libflaim.
 
 %prep
 %setup -q
+%patch0
 
 %build
 %{__make} libs \
@@ -66,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 	HOSTTYPE=%{_arch} \
 	DESTDIR=$RPM_BUILD_ROOT
 
-ln -s libflaim.so.1.2 $RPM_BUILD_ROOT%{_libdir}/libflaim.so
+ln -s libflaim.so.4.1 $RPM_BUILD_ROOT%{_libdir}/libflaim.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -77,12 +79,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc COPYING VERSION
-%attr(755,root,root) %{_libdir}/libflaim.so.1.2
+%attr(755,root,root) %{_libdir}/libflaim.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libflaim.so
-%{_includedir}/flaim.h
+%{_includedir}/*.h
 %{_pkgconfigdir}/libflaim.pc
 
 %files static
