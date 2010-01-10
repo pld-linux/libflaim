@@ -3,12 +3,12 @@
 Summary:	Embeddable cross-platform database engine
 Summary(pl.UTF-8):	Osadzalny, wieloplatformowy silnik baz danych
 Name:		libflaim
-Version:	4.9.845
+Version:	4.9.989
 Release:	1
-License:	GPL
+License:	(L?)GPL
 Group:		Libraries
-Source0:	http://forgeftp.novell.com/flaim/release/flaim/downloads/source/%{name}-%{version}.tar.gz
-# Source0-md5:	f719fe61584e9a2c2a2aede9a59cf5c1
+Source0:	http://forgeftp.novell.com/flaim/development/flaim/downloads/source/%{name}-%{version}.tar.gz
+# Source0-md5:	cbd0caf6239cffb7640391eda7551d4a
 Patch0:		%{name}-fix.patch
 URL:		http://forge.novell.com/modules/xfmod/project/?flaim
 BuildRequires:	libstdc++-devel
@@ -60,6 +60,7 @@ Statyczna biblioteka libflaim.
 %{__make} libs \
 	OSTYPE=%{_os} \
 	HOSTTYPE=%{_arch}
+#	ccflags="%{rpmcflags}" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -67,8 +68,6 @@ rm -rf $RPM_BUILD_ROOT
 	OSTYPE=%{_os} \
 	HOSTTYPE=%{_arch} \
 	DESTDIR=$RPM_BUILD_ROOT
-
-ln -s libflaim.so.4.1 $RPM_BUILD_ROOT%{_libdir}/libflaim.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
