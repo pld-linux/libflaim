@@ -1,5 +1,10 @@
-# TODO
-# - cflags & g++
+#
+# TODO:
+# - correct linking:
+#   Unresolved symbols found in libflaim.so.4.1:
+#     keypad halfdelay meta
+# - remove ldconfig invocation
+
 Summary:	Embeddable cross-platform database engine
 Summary(pl.UTF-8):	Osadzalny, wieloplatformowy silnik baz danych
 Name:		libflaim
@@ -12,6 +17,7 @@ Source0:	http://forgeftp.novell.com/flaim/development/flaim/downloads/source/%{n
 Patch0:		%{name}-fix.patch
 URL:		http://forge.novell.com/modules/xfmod/project/?flaim
 BuildRequires:	libstdc++-devel
+BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -54,13 +60,16 @@ Statyczna biblioteka libflaim.
 
 %prep
 %setup -q
-%patch0
+%patch0 -p0
+sed 's/ccflags += \(.*ccdefine.*ccinclude\)/ccflags += $(OPTCXXFLAGS) \1/' -i Makefile
 
 %build
 %{__make} libs \
 	OSTYPE=%{_os} \
-	HOSTTYPE=%{_arch}
-#	ccflags="%{rpmcflags}" \
+	HOSTTYPE=%{_arch} \
+	ec= \
+	compiler="%{__cxx}" exe_linker="%{__cxx}" shared_linker="%{__cxx}" \
+	OPTCXXFLAGS="-Wall -fPIC %{rpmcxxflags}" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -79,6 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYING VERSION
 %attr(755,root,root) %{_libdir}/libflaim.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libflaim.so.?
 
 %files devel
 %defattr(644,root,root,755)
